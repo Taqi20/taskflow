@@ -21,9 +21,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/auth", require("./routes/auth"));
-// app.use("/user", require("./routes/user"));
-// app.use("/todolist", require("./routes/todoList"));
-// app.use("/todo", require("./routes/todo"));
+app.use("/user", require("./routes/user"));
+app.use("/todolist", require("./routes/todoList"));
+app.use("/todo", require("./routes/todo"));
 // app.use("/edit", require("./routes/edit"));
 // app.use("/deleteuser", require("./routes/deleteUser"));
 
