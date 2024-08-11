@@ -41,7 +41,7 @@ export function LoadingProvider({ children }) {
 
     return (
         <LoadingContext.Provider value={{ loading, setLoading, fetchWithLoader }}>
-            //modal to show when seesion expires
+            {/*modal to show when seesion expires*/}
             <Dialog
                 open={sessionExpiredModalOpen}
                 onClose={handleClose}

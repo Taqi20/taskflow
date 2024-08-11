@@ -16,7 +16,8 @@ export default function Layout() {
                 <Route
                     path='/'
                     element={
-                        !user ? <LandingPage /> : <Navigate to={"/app"} replace={true} />
+                        // !user ? <LandingPage /> : <Navigate to={"/app"} replace={true}/>
+                        <LandingPage />
                     }
                     errorElement={<ErrorPage />}
                 >
