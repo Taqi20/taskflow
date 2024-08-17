@@ -5,6 +5,8 @@ import LandingPage from "./pages/LandingPage";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./components/NoAuths/Home";
 import About from "./components/NoAuths/About";
+import Login from './components/NoAuths/Login';
+import Signup from './components/NoAuths/Signup';
 
 export default function Layout() {
 
@@ -23,6 +25,8 @@ export default function Layout() {
                 >
                     <Route path="" element={<Home />} />
                     <Route path="about" element={<About />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="signup" element={<Signup />} />
                 </Route>
             </>
         )
