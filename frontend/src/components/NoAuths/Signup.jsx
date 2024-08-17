@@ -136,8 +136,8 @@ export default function Signup() {
 
     return (
         <>
-            <div className="h-full flex flex-col items-center justify-center">
-                <p className="font-popins text-4xl md:text-4xl font-semibold text-gray-200 mb-3 mt-2">
+            <div className="h-full flex flex-col items-center justify-center  bg-[#72b8ff] w-4/5 sm:w-2/4 lg:w-1/3 mx-auto mt-10 2xl:mt-32 rounded-lg mb-10">
+                <p className="font-popins text-4xl md:text-4xl font-semibold text-gray-200 mb-3 mt-20">
                     Sign Up
                 </p>
                 <div className="h-3 mb-8">
@@ -148,7 +148,7 @@ export default function Signup() {
                 </div>
                 <ThemeProvider theme={textFieldTheme}>
                     <form className="w-full" onSubmit={(e) => handleRegister(e)}>
-                        <div className="flex flex-col space-y-6 items-center mx-auto w-3/6 md:w-2/6">
+                        <div className="flex flex-col space-y-6 items-center mx-auto w-4/5">
                             <TextField
                                 variant="standard"
                                 label="Full Name"
@@ -187,7 +187,7 @@ export default function Signup() {
                             />
                             <button
                                 type="submit"
-                                className="text-white bg-[#444684] px-4 py-2 rounded-lg text-lg hover:bg-[#4a4c8f]"
+                                className="text-white bg-[#5daeff] px-4 py-2 rounded-lg text-lg hover:bg-[#41a0ff]"
                                 onClick={handleRegister}
                             >
                                 Register
@@ -197,7 +197,7 @@ export default function Signup() {
                     <div className="flex flex-col items-center space-y-2 mt-5">
                         <p className="text-gray-200">Already Registered?</p>
                         <Link to={'/login'}>
-                            <button className="bg-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md">
+                            <button className="bg-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md mb-5">
                                 Login Here
                             </button>
                         </Link>

@@ -2,7 +2,7 @@ import React from "react";
 
 function About() {
     return (
-        <section className="bg-[#4F5295] w-5/6 mx-auto mt-10 mb-5 2xl:w-4/6 2xl:mt-32 rounded-lg text-white px-7 py-6 font-popins flex flex-col space-y-6 text-center ">
+        <section className="bg-[#72b8ff] w-5/6 mx-auto mt-10 mb-5 2xl:w-4/6 2xl:mt-32 rounded-lg text-white px-7 py-6 font-popins flex flex-col space-y-6 text-center ">
             <h1 className="text-4xl text-center">Welcome to our Taskflow App!</h1>
 
             <div className="flex flex-col space-y-6 leading-7">

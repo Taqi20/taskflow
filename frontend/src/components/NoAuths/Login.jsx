@@ -90,23 +90,23 @@ export default function Login() {
     return (
         <>
             {user ? <p className="text-gray-300 text-xl font-semibold fixed top-16 left-3">Redirecting to the App...</p> : null}
-            <div className='h-full flex flex-col items-center justify-center'>
-                <p className="text-4xl md:text-5xl font-semibold text-gray-200 mb-3 mt-20">LogIn</p>
+            <div className='h-full flex flex-col items-center justify-center bg-[#72b8ff] w-4/5 sm:w-2/4 lg:w-1/3 mx-auto mt-10 2xl:mt-32 rounded-lg mb-10'>
+                <p className="text-4xl md:text-5xl font-semibold text-white mb-3 mt-20">LogIn</p>
                 <div className="h-3 mb-8">
                     {error && <p className="text-red-500 p-2">* {error}</p>}
-                    {success && <p className="text-white p-2">* {success}</p>}
+                    {success && <p className="text-black p-2">* {success}</p>}
                 </div>
 
                 <ThemeProvider theme={textFieldTheme}>
                     <form onSubmit={handleSubmit} className='w-full'>
-                        <div className="flex flex-col space-y-8 items-center mx-auto w-3/6 md:w-2/6">
+                        <div className="flex flex-col space-y-8 items-center mx-auto w-4/5">
                             <TextField
                                 variant="standard"
                                 label="Email"
                                 type="email"
                                 value={email}
                                 onChange={handleEmailChange}
-                                className="w-full bg-[#6063B1]"
+                                className="w-full text-[#72b8ff]"
                             />
                             <TextField
                                 variant="standard"
@@ -114,15 +114,15 @@ export default function Login() {
                                 label="Password"
                                 value={password}
                                 onChange={handlePasswordChange}
-                                className="w-full"
+                                className="w-full text-[#72b8ff]"
                             />
-                            <button type="submit" className="text-white bg-[#444684] px-4 py-2 rounded-lg text-lg hover:bg-[#4a4c8f]">
+                            <button type="submit" className="text-white bg-[#5daeff] px-4 py-2 rounded-lg text-lg hover:bg-[#41a0ff]">
                                 Login
                             </button>
                         </div>
                     </form>
-                    <div className="flex flex-col items-center space-y-2 mt-5">
-                        <p className="text-gray-200">New User?</p>
+                    <div className="flex flex-col items-center space-y-2 mt-5 mb-5">
+                        <p className="text-white">New User?</p>
                         <Link to={'/signup'}>
                             <button className="bg-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md">
                                 Register Here

@@ -6,7 +6,7 @@ function LandingPage() {
 
     useEffect(() => {
 
-        document.body.style.backgroundColor = "#6063B1";
+        document.body.style.backgroundColor = "#b9e4ff";
 
         return () => {
             document.body.style.backgroundColor = "";
