@@ -79,7 +79,7 @@ const Navbar = () => {
             {/* Sidebar */}
             <div
                 className={`${toggle ? "translate-x-0" : "translate-x-full"
-                    } fixed top-0 right-0 w-3/4 max-w-sm h-full bg-indigo-300 transition-transform transform duration-300 ease-in-out z-40`}
+                    } fixed top-0 right-0 w-3/4 max-w-sm h-full bg-[#61affd] transition-transform transform duration-300 ease-in-out z-40`}
             >
                 <ul className="list-none flex flex-col pt-6 gap-y-8 px-4">
                     {navLinks.map((nav) => (
