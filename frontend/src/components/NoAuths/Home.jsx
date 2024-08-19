@@ -1,4 +1,4 @@
-import todoListImg from "../../assets/Landing page assets/to-do-list.jpg";
+import todoListImg from "../../assets/Landing page assets/to-do-list.svg";
 import calenderImg from "../../assets/Landing page assets/calender.svg";
 import mobileListImg from "../../assets/Landing page assets/mobileNoteList.svg";
 import addTaskImg from "../../assets/Landing page assets/add-task.svg";

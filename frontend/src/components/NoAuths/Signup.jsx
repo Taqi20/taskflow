@@ -98,8 +98,6 @@ export default function Signup() {
             return;
         }
 
-        setLoading(true);
-
         try {
             const response = await fetch(`${HOST}/auth/createuser`, {
                 method: "POST",
@@ -129,8 +127,6 @@ export default function Signup() {
         } catch (error) {
             setError("An error occurred while registering.");
             setSuccess("");
-        } finally {
-            setLoading(false);
         }
     };
 

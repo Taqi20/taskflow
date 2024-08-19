@@ -47,7 +47,7 @@ export default function Login() {
         //creating object of the given info, so that we can hit our api with this data
 
         const data = {
-            email: eamil.trim(),
+            email: email.trim(),
             password: password.trim(),
         };
 
