@@ -24,7 +24,7 @@ export default function Login() {
         setPassword(e.target.value);
     };
 
-    const isEmailValid = (eamil) => {
+    const isEmailValid = (email) => {
         // Simple email validation using a regular expression
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
         return emailRegex.test(email);
