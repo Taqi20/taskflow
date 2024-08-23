@@ -12,7 +12,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
     const [ user, setUser ] = useState(null);
-    const setLoading = useLoading();
+    const { setLoading } = useLoading();
 
     async function getUser() {
         setLoading(true);

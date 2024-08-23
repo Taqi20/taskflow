@@ -7,6 +7,8 @@ import Home from "./components/NoAuths/Home";
 import About from "./components/NoAuths/About";
 import Login from './components/NoAuths/Login';
 import Signup from './components/NoAuths/Signup';
+import AppPage from './pages/AppPage';
+import TodoApp from './pages/TodoApp';
 
 export default function Layout() {
 
@@ -18,8 +20,7 @@ export default function Layout() {
                 <Route
                     path='/'
                     element={
-                        // !user ? <LandingPage /> : <Navigate to={"/app"} replace={true}/>
-                        <LandingPage />
+                        !user ? <LandingPage /> : <Navigate to={"/app"} replace={true} />
                     }
                     errorElement={<ErrorPage />}
                 >
@@ -27,6 +28,22 @@ export default function Layout() {
                     <Route path="about" element={<About />} />
                     <Route path="login" element={<Login />} />
                     <Route path="signup" element={<Signup />} />
+                </Route>
+
+                <Route
+                    path="/app"
+                    element={
+                        user ? <AppPage /> : <Navigate to={"/login"} replace={true} />
+                    }
+                    errorElement={<ErrorPage />}
+                >
+                    <Route path="" element={<TodoApp />} />
+                    {/* <Route path="profile" element={<Profile />}>
+                        <Route path="" element={<UserInfo />} />
+                        <Route path="resetpassword" element={<PasswordEditForm />} />
+                        <Route path="editname" element={<NameEditForm />} />
+                        <Route path="editemail" element={<EmailEditForm />} />
+                    </Route> */}
                 </Route>
             </>
         )
