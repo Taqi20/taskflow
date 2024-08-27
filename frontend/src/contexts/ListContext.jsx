@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLoading } from "./LoadingContext";
 import { HOST } from "../config/config";
+import { List } from "@mui/material";
 
 const ListContext = createContext();
 
@@ -67,27 +68,121 @@ export const ListProvider = ({ children }) => {
         } catch (error) {
             console.error(`Error in getLists: ${error.message}`);
         }
-
-        //add new list 
-        const addNewList = async (title) => {
-            try {
-                const response = await fetchWithLoader(`${HOST}/todolist/new`, {
-                    method: "POST",
-                    credentials: "include",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JOSN.stringify({ title }),
-                });
-                const newList = await response.json();
-
-                //setLists(lists.concat(newList));
-                setLists([ ...lists, newList ]);
-                setLatestListId(newList._id);
-                setSelectedList(newList._id);
-            } catch (error) {
-                console.error(error.message);
-            }
-        }
     }
-}
+
+    //add new list 
+    const addNewList = async (title) => {
+        try {
+            const response = await fetchWithLoader(`${HOST}/todolist/new`, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JOSN.stringify({ title }),
+            });
+            const newList = await response.json();
+
+            //setLists(lists.concat(newList));
+            setLists([ ...lists, newList ]);
+            setLatestListId(newList._id);
+            setSelectedList(newList._id);
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
+
+    //edit lis title 
+    const editList = async (editedTitle, listId) => {
+        try {
+            const res = await fetchWithLoader(`${HOST}/todolist/updatetitle/${listId}`, {
+                method: "PATCH",
+                credentials: "include",
+                header: {
+                    "Content-type": "application/json",
+                }
+            }
+            );
+
+            if (!res.ok) {
+                throw new Error(`Failed to update list title (status ${res.status})`);
+            }
+
+            const data = await res.json();
+            const newTitle = data.newTitle;
+
+            setLists((prevLists) => {
+                return prevLists.map((list) => {
+                    if (list._id === listId) {
+                        return { ...list, title: newTitle };
+                    }
+                    return list;
+                });
+            });
+
+            selectList(listId);
+            setSelectedListName(newTitle);
+
+
+        } catch (error) {
+            console.error("Error editing list:", error);
+            return false; // Indicate failure
+        }
+    };
+
+    //delete a list
+
+    const deleteList = async (listId) => {
+        try {
+            const res = await fetchWithLoader(`${HOST}/todolist/delete/${listId}`, {
+                method: "DELETE",
+                credentials: "include",
+                header: {
+                    "Content-type": "application/json",
+                },
+            });
+
+            if (!res.ok) {
+                throw new Error(`Failed to Delete the List (status ${res.status})`);
+            }
+
+            const data = await res.json();
+            const deletedList = data.deleteList;
+            const updatedList = lists.filter((list) => list._id !== deleteList._id);
+
+            setLists(updatedList);
+            if (deletedList._id === selectedList._id) {
+                setSelectedList(null);
+                setSelectedListName(null);
+            }
+
+        } catch (error) {
+            console.error("Error deleting the list:", error);
+        }
+    };
+
+    return (
+        <ListContext.Provider
+            value={{
+                lists,
+                selectedList,
+                setSelectedList,
+                getDefaultTasksList,
+                selectList,
+                addNewList,
+                editList,
+                deleteList,
+                latestListId,
+                setLatestListId,
+                selectedListName,
+                setSelectedListName,
+                defaultList,
+                setDefaultList,
+                isNavColOpen,
+                setIsNavColOpen,
+            }}
+        >
+            {children}
+        </ListContext.Provider>
+    );
+};
