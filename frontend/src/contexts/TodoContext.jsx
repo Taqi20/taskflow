@@ -10,7 +10,7 @@ export const useTodoContext = () => {
 };
 
 export const TodoProvider = ({ children }) => {
-    const { selectedList, defualtList, getDefaultTasksList } = useListContext();
+    const { selectedList, defaultList, getDefaultTasksList } = useListContext();
     const [ todos, setTodos ] = useState([]);
     const [ selectedTodo, setSelectedTodo ] = useState(null);
     const completedTodoStyle = "line-through font-light";
