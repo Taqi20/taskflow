@@ -29,7 +29,7 @@ export function LoadingProvider({ children }) {
             }
 
             return response;
-        } catch (error) {
+        } finally {
             setLoading(false);
         }
     };

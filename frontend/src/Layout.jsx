@@ -12,7 +12,7 @@ import TodoApp from './pages/TodoApp';
 
 export default function Layout() {
 
-    const user = useAuth();
+    const { user } = useAuth();
 
     const router = createBrowserRouter(
         createRoutesFromElements(

@@ -32,13 +32,14 @@ export const AuthProvider = ({ children }) => {
             }
 
         } catch (error) {
-            console.error(error.message);
+            console.log(error);
         } finally {
             setLoading(false);
         }
     }
 
     useEffect(() => {
+        console.log("yaha authcontext me gadbad hai")
         getUser();
     }, []);
 
