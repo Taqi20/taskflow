@@ -1,13 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLoading } from "./LoadingContext";
 import { HOST } from "../config/config";
-import { List } from "@mui/material";
 
 const ListContext = createContext();
 
 export const useListContext = () => {
     return useContext(ListContext);
-}
+};
 
 export const ListProvider = ({ children }) => {
     const [ lists, setLists ] = useState([]);
@@ -47,7 +46,7 @@ export const ListProvider = ({ children }) => {
 
     //setting up the selected list value 
     const selectList = (listId) => {
-        const listToSelect = lists.find(lists => lists._id === listId);
+        const listToSelect = lists.find((list) => list._id === listId);
         setSelectedList(listToSelect);
         setSelectedListName(listToSelect.title);
     };
@@ -56,7 +55,7 @@ export const ListProvider = ({ children }) => {
     async function getDefaultTasksList() {
         try {
             const response = await fetchWithLoader(`${HOST}/todolist/tasks`, {
-                credentials: "iclude",
+                credentials: "include",
             });
 
             if (!response.ok) {
@@ -79,7 +78,7 @@ export const ListProvider = ({ children }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JOSN.stringify({ title }),
+                body: JSON.stringify({ title }),
             });
             const newList = await response.json();
 
@@ -98,9 +97,10 @@ export const ListProvider = ({ children }) => {
             const res = await fetchWithLoader(`${HOST}/todolist/updatetitle/${listId}`, {
                 method: "PATCH",
                 credentials: "include",
-                header: {
-                    "Content-type": "application/json",
-                }
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ title: editedTitle }),
             }
             );
 
@@ -123,7 +123,7 @@ export const ListProvider = ({ children }) => {
             selectList(listId);
             setSelectedListName(newTitle);
 
-
+            return newTitle; //indicates success
         } catch (error) {
             console.error("Error editing list:", error);
             return false; // Indicate failure
@@ -137,8 +137,8 @@ export const ListProvider = ({ children }) => {
             const res = await fetchWithLoader(`${HOST}/todolist/delete/${listId}`, {
                 method: "DELETE",
                 credentials: "include",
-                header: {
-                    "Content-type": "application/json",
+                headers: {
+                    "Content-Type": "application/json",
                 },
             });
 
@@ -147,8 +147,8 @@ export const ListProvider = ({ children }) => {
             }
 
             const data = await res.json();
-            const deletedList = data.deleteList;
-            const updatedList = lists.filter((list) => list._id !== deleteList._id);
+            const deletedList = data.deletedList;
+            const updatedList = lists.filter((list) => list._id !== deletedList._id);
 
             setLists(updatedList);
             if (deletedList._id === selectedList._id) {

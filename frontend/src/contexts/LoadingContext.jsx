@@ -1,8 +1,9 @@
 import { createContext, useContext, useState } from "react";
-
 import Dialog from "@mui/material/Dialog";
-import { DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
-
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 const LoadingContext = createContext();
 
 export function useLoading() {
@@ -68,5 +69,5 @@ export function LoadingProvider({ children }) {
             </Dialog>
             {children}
         </LoadingContext.Provider>
-    )
+    );
 }
