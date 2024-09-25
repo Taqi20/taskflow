@@ -3,7 +3,7 @@ import addStepIcon from "../assets/addStep_icon.svg";
 import checkedCircleIcon from "../assets/checked_circle.svg";
 import dotsOption from "../assets/dotsOption_icon.svg";
 import hoverCheckIcon from "../assets/hover_check_circle.svg";
-import cirlceIcon from "../assets/circle_icon.svg";
+import circleIcon from "../assets/circle_icon.svg";
 import deleteRedIcon from "../assets/deleteRed_icon.svg";
 import plusIcon from "../assets/plus_icon.svg";
 import { useTodoContext } from "../contexts/TodoContext";
@@ -81,7 +81,7 @@ export function AddStep(props) {
         <>
             {isAddingStep ? (
                 <div className="flex items-center px-3 py-2">
-                    <img src={cirlceIcon} alt="" className="h-5  mr-3" />
+                    <img src={circleIcon} alt="" className="h-5  mr-3" />
 
                     <div className="w-full">
                         <span className="text-sm ">
@@ -295,14 +295,14 @@ export default function TodoStep(props) {
     }
 
     return (
-        <>
+        <div>
             <div className="flex items-center  hover:bg-gray-100 px-3 py-2">
                 <div onClick={handleOnStepCheck}>
                     {thisStep.isCompleted ? (
                         <img src={checkedCircleIcon} alt="" className="h-5 mr-3" />
                     ) : (
                         <img
-                            src={isStepHovered ? hoverCheckIcon : cirlceIcon}
+                            src={isStepHovered ? hoverCheckIcon : circleIcon}
                             alt=""
                             className="h-5  mr-3"
                             onMouseEnter={() => setIsStepHovered(true)}
@@ -359,6 +359,6 @@ export default function TodoStep(props) {
                     menuButtonRef={menuButtonRef}
                 />
             )}
-        </>
+        </div>
     );
 }
