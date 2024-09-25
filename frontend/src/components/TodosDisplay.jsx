@@ -145,7 +145,7 @@ export default function TodosDisplay() {
 
     return (
         <div>
-            <div id="display" className="bg-[#5c70be] w-full overflow-hidden flex">
+            <div id="display" className="bg-[#5daeff] w-full overflow-hidden flex">
                 <div
                     className={`w-full  flex flex-col  mx-auto  relative overflow-hidden ${selectedTodo ? "hidden" : ""
                         } md:block`}
@@ -158,7 +158,7 @@ export default function TodosDisplay() {
                         />
                     </div>
                     {/* List Name */}
-                    <div className=" w-5/6 mx-auto h-[10%] lg:h-1/6 bg-[#5c70be] flex items-center">
+                    <div className=" w-5/6 mx-auto h-[10%] lg:h-1/6 bg-[#5daeff] flex items-center">
                         <span className="text-white text-3xl overflow-hidden whitespace-nowrap overflow-ellipsis">
                             {selectedListName
                                 ? selectedListName
@@ -166,8 +166,8 @@ export default function TodosDisplay() {
                         </span>
                     </div>
 
-                    <div className="w-full h-[70%] md:h-[72%] lg:h-[70%] xl:h-4/6 2xl:h-[74%] bg-[#5c70be] overflow-y-auto space-y-1">
-                        <div className="w-full bg-[#5c70be] space-y-1">
+                    <div className="w-full h-[70%] md:h-[72%] lg:h-[70%] xl:h-4/6 2xl:h-[74%] bg-[#5daeff] overflow-y-auto space-y-1">
+                        <div className="w-full bg-[#5daeff] space-y-1">
                             {todos && todos.length !== 0 && todos.map ? (
                                 todos.map((todo, index) => {
                                     if (!todo.isCompleted) {

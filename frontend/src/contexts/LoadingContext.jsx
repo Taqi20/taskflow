@@ -58,7 +58,7 @@ export function LoadingProvider({ children }) {
                 </DialogContent>
                 <DialogActions>
                     <button
-                        className="mx-auto bg-indigo-600 cursor-pointer hover:bg-indigo-700 text-white py-1 px-4 rounded-md"
+                        className="mx-auto bg-blue-500 cursor-pointer hover:bg-blue-600 text-white py-1 px-4 rounded-md"
                         onClick={handleClose}
                         autoFocus
                     >

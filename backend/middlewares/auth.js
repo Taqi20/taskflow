@@ -15,7 +15,7 @@ const tokenAuth = (req, res, next) => {
             }
         })
     } else {
-        res.sendStatus(401).json({
+        res.sendStatus(786).json({
             msg: "invalid authentication"
         })
     }
