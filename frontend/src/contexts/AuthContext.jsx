@@ -39,7 +39,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        console.log("yaha authcontext me gadbad hai")
         getUser();
     }, []);
 

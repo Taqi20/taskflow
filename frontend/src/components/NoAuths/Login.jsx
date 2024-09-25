@@ -5,6 +5,7 @@ import { HOST } from '../../config/config';
 import { ThemeProvider } from '@mui/material/styles';
 import textFieldTheme from './textFieldTheme'
 import { TextField } from '@mui/material';
+import { useLoading } from '../../contexts/LoadingContext';
 
 export default function Login() {
 
@@ -13,6 +14,7 @@ export default function Login() {
     const [ error, setError ] = useState("");
     const [ success, setSuccess ] = useState("");
     const { user, setUser } = useAuth();
+    const { setLoading } = useLoading();
 
     const navigate = useNavigate();
 
@@ -33,6 +35,7 @@ export default function Login() {
     //handle login request
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         if (email.trim() === "" || password.trim() === "") {
             setError("All fields are necessary");

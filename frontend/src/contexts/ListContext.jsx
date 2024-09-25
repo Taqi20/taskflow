@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useLoading } from "./LoadingContext";
+// import { useLoading } from "./LoadingContext";
 import { HOST } from "../config/config";
 
 const ListContext = createContext();
@@ -16,7 +16,7 @@ export const ListProvider = ({ children }) => {
     const [ isNavColOpen, setIsNavColOpen ] = useState(true);
     const [ defaultList, setDefaultList ] = useState(null);
 
-    const { fetchWithLoader } = useLoading();
+    // const { fetchWithLoader } = useLoading();
 
     useEffect(() => {
         //fetching lists
