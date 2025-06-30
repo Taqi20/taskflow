@@ -67,7 +67,8 @@ router.post('/createuser',
             res.cookie("authToken", authToken, {
                 expires: new Date(Date.now() + 10 * 60 * 60 * 1000), //10 hrs * 60 mins * 60 sec * 1000 milisec
                 httpOnly: true,
-                sameSite: 'lax'
+                sameSite: 'none',
+                secure: true
             }).json({
                 success: true, user: userResponse
             });
@@ -126,7 +127,8 @@ router.post("/login", [
                         return res.cookie("authToken", authToken, {
                             expires: new Date(Date.now() + 10 * 60 * 60 * 1000),
                             httpOnly: true,
-                            sameSite: 'lax'
+                            sameSite: 'none',
+                            secure: true
                         }).json({
                             success: true, user: userResponse
                         })

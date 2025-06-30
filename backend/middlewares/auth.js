@@ -6,7 +6,7 @@ const tokenAuth = (req, res, next) => {
     if (token) {
         jwt.verify(token, process.env.AUTH_SECRET_KEY, (err, data) => {
             if (err) {
-                return res.sendStatus(403).json({
+                return res.send(403).json({
                     msg: "Authorization refused"
                 });
             } else {
@@ -15,7 +15,7 @@ const tokenAuth = (req, res, next) => {
             }
         })
     } else {
-        res.sendStatus(786).json({
+        res.send(403).json({
             msg: "invalid authentication"
         })
     }
