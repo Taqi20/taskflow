@@ -9,7 +9,6 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { HOST } from "../../config/config";
 
-//Profile Navbar
 
 function ProfileNav({ handleLogout }) {
     return (
@@ -39,7 +38,6 @@ function ProfileNav({ handleLogout }) {
     );
 }
 
-//The right side displayed user info. (Inside the space which get replaced with Edit forms)
 
 export function UserInfo() {
     const { user, setUser } = useAuth();
@@ -111,7 +109,7 @@ function Profile() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.body.style.backgroundColor = "#5c70be";
+        document.body.style.backgroundColor = "#72B8FF";
 
         return () => {
             document.body.style.backgroundColor = "";

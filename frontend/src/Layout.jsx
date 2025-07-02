@@ -9,6 +9,14 @@ import Login from './components/NoAuths/Login';
 import Signup from './components/NoAuths/Signup';
 import AppPage from './pages/AppPage';
 import TodoApp from './pages/TodoApp';
+import Profile, { UserInfo } from './components/profile/Profile';
+import {
+    EmailEditForm,
+    NameEditForm,
+    PasswordEditForm,
+} from "./components/profile/EditForms";
+
+
 
 export default function Layout() {
 
@@ -28,6 +36,7 @@ export default function Layout() {
                     <Route path="about" element={<About />} />
                     <Route path="login" element={<Login />} />
                     <Route path="signup" element={<Signup />} />
+
                 </Route>
 
                 <Route
@@ -38,12 +47,12 @@ export default function Layout() {
                     errorElement={<ErrorPage />}
                 >
                     <Route path="" element={<TodoApp />} />
-                    {/* <Route path="profile" element={<Profile />}>
+                    <Route path="profile" element={<Profile />}>
                         <Route path="" element={<UserInfo />} />
                         <Route path="resetpassword" element={<PasswordEditForm />} />
                         <Route path="editname" element={<NameEditForm />} />
                         <Route path="editemail" element={<EmailEditForm />} />
-                    </Route> */}
+                    </Route>
                 </Route>
             </>
         )

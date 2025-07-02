@@ -6,8 +6,8 @@ import { HOST } from "../../config/config";
 
 export function NameEditForm() {
     const [ error, setError ] = useState("");
-    const [ newName, setNewName ] = useState(""); // State variable for new name
-    const [ password, setPassword ] = useState(""); // State variable for password
+    const [ newName, setNewName ] = useState("");
+    const [ password, setPassword ] = useState("");
     const { setUser } = useAuth();
     const { fetchWithLoader } = useLoading();
 
@@ -21,14 +21,12 @@ export function NameEditForm() {
         setPassword(event.target.value);
     };
 
-    //Handle Change name request
     const handleApply = async () => {
         if (newName.trim() === "" || password.trim() === "") {
             setError("* All Fields are Necessary.");
             return;
         }
 
-        // Prepare the data to send to the backend
         const data = {
             newName: newName,
             password: password,
@@ -49,7 +47,6 @@ export function NameEditForm() {
                 setUser(data.user);
                 navigate("/app/profile", { replace: true });
             } else {
-                // Handle errors or display error messages
                 const errorData = await response.json();
                 setError("* " + errorData.message); // Set the error message from the response
             }
@@ -136,7 +133,6 @@ export function EmailEditForm() {
         return emailPattern.test(email);
     };
 
-    //Handle Email Edit
     const handleEmailEdit = async () => {
         if (!newEmail.trim() || !password.trim()) {
             setError("* Please fill in all fields.");
@@ -148,7 +144,6 @@ export function EmailEditForm() {
             return;
         }
 
-        // Prepare the data to send to the backend
         const data = {
             newEmail: newEmail,
             password: password,
@@ -231,7 +226,6 @@ export function EmailEditForm() {
     );
 }
 
-//Password Form
 
 export function PasswordEditForm() {
     const [ error, setError ] = useState("");
@@ -255,7 +249,6 @@ export function PasswordEditForm() {
         return passwordRegex.test(password);
     };
 
-    //Handle Password Edit
     const handleApplyPasswordEdit = async () => {
         if (!newPassword.trim() || !previousPassword.trim()) {
             setError("* Please fill in all fields.");
