@@ -97,7 +97,7 @@ router.get("/:id", [ param("id").exists().withMessage("missing id parameter") ],
                 return res.status(403).json({ message: "Forbidden" });
             }
 
-            const todos = await todo.find({ _id: { $in: todolists.todos } });
+            const todos = await todo.find({ _id: { $in: todoList.todos } });
 
             if (!todos) {
                 res.status(404).send("NOT FOUND");

@@ -162,7 +162,12 @@ router.post("/login", [
 
 router.get("/logout", tokenAuth, (req, res) => {
     try {
-        res.clearCookie("authToken");
+        res.clearCookie("authToken", {
+            httpOnly: true,
+            sameSite: 'none',
+            secure: true,
+            path: '/'
+        });
         res.status(200).json({
             msg: "logged out successfully", success: true
         });

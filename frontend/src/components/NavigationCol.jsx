@@ -357,6 +357,10 @@ export default function NavigationCol() {
 
             if (response.ok) {
                 if (data.success) {
+
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("firstName");
+
                     setUser(null);
                     navigate("/login", { replace: true });
                 }
