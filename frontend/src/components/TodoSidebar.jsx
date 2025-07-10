@@ -107,28 +107,6 @@ export default function TodoSidebar() {
         }
     }, [ selectedTodo ]);
 
-    //Setting up the Styles of the Due Date div based on the due Date the todo has
-    useEffect(() => {
-        if (selectedTodo) {
-            if (
-                selectedTodo.dueAt &&
-                dayjs(selectedTodo.dueAt) >= dayjs().startOf("day")
-            ) {
-                setDueDateStyle({ spanCSS: "text-[#005fb8]", icon: dueDateSetIcon });
-                //cssObj.spanCss = "text-[#005fb8]"
-            } else if (
-                selectedTodo.dueAt &&
-                dayjs(selectedTodo.dueAt) < dayjs().startOf("day")
-            ) {
-                //cssObj.spanCss = "text-red-700"
-                setDueDateStyle({ spanCSS: "text-red-700", icon: dueDateSetRedIcon });
-            } else {
-                //cssObj.spanCss = "font-light"
-                setDueDateStyle({ spanCSS: "font-light", icon: dueDateIcon });
-            }
-        }
-    }, [ selectedTodo ]);
-
     //Setting Todo note's value and title height
     useEffect(() => {
         if (selectedTodo) {
@@ -181,66 +159,6 @@ export default function TodoSidebar() {
             }
         }
     }, [ selectedTodo ]);
-
-    //Adding Due Date to the Todo
-    async function handleAddDueDate() {
-        try {
-            let updatedTodo;
-            if (dayjs(dateValue).isSame(dayjs(), "day")) {
-                updatedTodo = await editTodo(
-                    { dueAt: dateValue.toISOString(), inMyDay: "true" },
-                    selectedTodo._id
-                );
-            } else {
-                updatedTodo = await editTodo(
-                    { dueAt: dateValue.toISOString() },
-                    selectedTodo._id
-                );
-            }
-
-            // Only update the todos state if the updatedTodo is available
-            setTodos((prevTodos) => {
-                return prevTodos.map((todo) => {
-                    if (todo._id === selectedTodo._id) {
-                        return updatedTodo;
-                    }
-                    return todo;
-                });
-            });
-            selectTodo(selectedTodo._id);
-            setIsCalenderActive(false);
-        } catch (error) {
-            console.error("Error updating todo's Due Date:", error);
-        }
-    }
-
-    //Handeling Removing Due Date of Todo
-
-    async function handleRemoveDate(e) {
-        e.stopPropagation();
-
-        try {
-            const updatedTodo = await editTodo(
-                { dueAt: "REMOVEDATE" },
-                selectedTodo._id
-            );
-
-            // Only update the todos state if the updatedTodo is available
-            setTodos((prevTodos) => {
-                return prevTodos.map((todo) => {
-                    if (todo._id === selectedTodo._id) {
-                        return updatedTodo;
-                    }
-                    return todo;
-                });
-            });
-            selectTodo(selectedTodo._id);
-            setIsCalenderActive(false);
-        } catch (error) {
-            console.error("Error updating todo's Due Date:", error);
-        }
-    }
-
     //Handles TextArea's Size when the input changes
 
     function textAreaAdjust() {
@@ -507,31 +425,6 @@ export default function TodoSidebar() {
                             <div
                                 className="h-6 w-6 ml-auto hover:bg-gray-100 flex items-center"
                                 onClick={(e) => handleRemoveMyDay(e)}
-                            >
-                                <img
-                                    src={crossIcon}
-                                    alt="remove due-date"
-                                    className="h-4 mx-auto"
-                                />
-                            </div>
-                        )}
-                    </div>
-                    {/* Due Date */}
-                    <div
-                        id="due-date"
-                        className={`p-3 flex items-center cursor-pointer border`}
-                        onClick={() => setIsCalenderActive(true)}
-                    >
-                        <img src={dueDateStyle.icon} alt="" className="h-5 mr-5" />
-                        <span className={`text-sm ${dueDateStyle.spanCSS}`}>
-                            {selectedTodo.dueAt
-                                ? `Due ${dayjs(selectedTodo.dueAt).format("ddd, DD MMM, YYYY")}`
-                                : "Add a Due Date"}
-                        </span>
-                        {selectedTodo.dueAt && (
-                            <div
-                                className="h-6 w-6 ml-auto hover:bg-gray-100 flex items-center"
-                                onClick={(e) => handleRemoveDate(e)}
                             >
                                 <img
                                     src={crossIcon}

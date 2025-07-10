@@ -303,22 +303,6 @@ export default function NavigationCol() {
             console.error(error.message);
         }
     }
-    async function handlePlannedDefaultList() {
-        try {
-            const allTodos = await getAllTodos();
-            const dueTodos = allTodos.filter((todo) => todo.dueAt);
-            setTodos(dueTodos);
-            setSelectedList(null);
-            setSelectedListName("Planned");
-            setDefaultList("Planned");
-            setSelectedTodo(null);
-            if (window.innerWidth < 1024) {
-                setIsNavColOpen(false);
-            }
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
     async function handleTasksDefaultList() {
         try {
             const defaultTasksList = await getDefaultTasksList();
@@ -453,11 +437,11 @@ export default function NavigationCol() {
                                 title="Important"
                                 onClick={handleImportantDefaultList}
                             />
-                            <DefaultListOption
+                            {/* <DefaultListOption
                                 icon={calendarIcon}
                                 title="Planned"
                                 onClick={handlePlannedDefaultList}
-                            />
+                            /> */}
                             <DefaultListOption
                                 icon={tasksIcon}
                                 title="Tasks"
